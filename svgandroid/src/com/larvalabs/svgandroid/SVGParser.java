@@ -1034,6 +1034,7 @@ public class SVGParser {
                     gradient.colors.add(color);
                 }
             } else if (localName.equals("g")) {
+            	Properties props = new Properties(atts);
                 // Check to see if this is the "bounds" layer
                 if ("bounds".equalsIgnoreCase(getStringAttr("id", atts))) {
                     boundsMode = true;
@@ -1043,7 +1044,7 @@ public class SVGParser {
                     //Util.debug("Hidden up: " + hiddenLevel);
                 }
                 // Go in to hidden mode if display is "none"
-                if ("none".equals(getStringAttr("display", atts))) {
+                if ("none".equals(props.getString("display"))) {
                     if (!hidden) {
                         hidden = true;
                         hiddenLevel = 1;
