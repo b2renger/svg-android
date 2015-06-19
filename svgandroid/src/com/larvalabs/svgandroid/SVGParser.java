@@ -1050,6 +1050,10 @@ public class SVGParser {
                         //Util.debug("Hidden up: " + hiddenLevel);
                     }
                 }
+                else
+                {
+                	 pushTransform(atts);
+                }
             } else if (!hidden && localName.equals("rect")) {
                 Float x = getFloatAttr("x", atts);
                 if (x == null) {
@@ -1241,6 +1245,10 @@ public class SVGParser {
                     if (hiddenLevel == 0) {
                         hidden = false;
                     }
+                }
+                else
+                {
+                	popTransform();
                 }
                 // Clear gradient map
                 gradientMap.clear();
